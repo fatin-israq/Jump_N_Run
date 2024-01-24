@@ -107,6 +107,8 @@ def display_score():
 def collision_sprite():
     if pygame.sprite.spritecollide(player.sprite, obstacle_group, False):
         obstacle_group.empty()
+        death_audio = pygame.mixer.Sound('audio/death.wav')
+        death_audio.play()
         return False
     else:
         return True
@@ -121,6 +123,7 @@ game_active = False
 start_time = 0
 score = 0
 bg_music = pygame.mixer.Sound('audio/background_music.ogg')
+bg_music.set_volume(0.5)
 bg_music.play(loops=-1)
 
 # Groups
