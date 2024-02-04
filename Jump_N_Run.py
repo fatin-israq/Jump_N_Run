@@ -33,9 +33,10 @@ class Player(pygame.sprite.Sprite):
 
     def player_input(self):
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_SPACE] and self.rect.bottom >= 650:
+        if (keys[pygame.K_SPACE] or keys[pygame.K_UP]) and self.rect.bottom >= 650:
             self.gravity = -20
             self.jump_sound.play()
+
 
     def apply_gravity(self):
         self.gravity += 1
@@ -72,6 +73,11 @@ class Obstacle(pygame.sprite.Sprite):
             snail_frame_02 = pygame.image.load('art/enemies/snailWalk2.png').convert_alpha()
             self.frames = [snail_frame_01, snail_frame_02]
             y_pos = 650
+        elif type == 'slime':
+            slime_frame_01 = pygame.image.load('art/enemies/slimeWalk1.png')
+            slime_frame_02 = pygame.image.load('art/enemies/slimeWalk2.png')
+            self.frames = [slime_frame_01, slime_frame_02]
+            y_pos = 652
         else:
             # in case of adding any other obstacles
             y_pos = 0
@@ -88,7 +94,12 @@ class Obstacle(pygame.sprite.Sprite):
 
     def update(self):
         self.animation_state()
-        self.rect.x -= 5
+        if display_score() < 30:
+            self.rect.x -= 5
+        elif display_score() < 70:
+            self.rect.x -= 7
+        else:
+            self.rect.x -= 10
         self.destroy()
 
     def destroy(self):
@@ -157,7 +168,7 @@ while True:
 
         if game_active:
             if event.type == obstacle_timer:
-                obstacle_group.add(Obstacle(choice(['fly', 'snail', 'snail', 'snail'])))
+                obstacle_group.add(Obstacle(choice(['fly', 'snail', 'slime', 'snail'])))
 
         else:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
