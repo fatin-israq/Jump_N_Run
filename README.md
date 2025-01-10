@@ -41,8 +41,8 @@ pip install pygame
 ### Clone this repository:
 
 ```bash
-git clone https://github.com/fatin-israq/jump-n-run.git
-cd jump-n-run
+git clone https://github.com/fatin-israq/Jump-N-Run.git
+cd Jump-N-Run
 ```
 
 ### Run the game
