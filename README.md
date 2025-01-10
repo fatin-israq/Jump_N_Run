@@ -55,7 +55,7 @@ python main.py
 
 Here's a GIF showing the gameplay
 
-[![Gameplay.gif](https://s13.gifyu.com/images/SX5HW.gif)](https://gifyu.com/image/SX5HW)
+![ScreenRecording2025-01-10185302-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/8f5ccb64-57d9-4a3e-8d72-1a60830468f0)
 
 ## License
 
